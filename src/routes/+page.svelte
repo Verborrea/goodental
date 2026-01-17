@@ -5,14 +5,18 @@
 
 	let showSplash = $state(false);
 
-	// onMount(() => {
-	// 	const timer = setTimeout(() => {
-	// 		showSplash = false;
-	// 	}, 3000);
+	onMount(() => {
+		const timer = setTimeout(() => {
+			showSplash = false;
+		}, 3000);
 
-	// 	return () => clearTimeout(timer);
-	// });
+		return () => clearTimeout(timer);
+	});
 </script>
+
+<svelte:head>
+	<title>Bienvenido a Goodental</title>
+</svelte:head>
 
 {#if showSplash}
 	<Splash />
