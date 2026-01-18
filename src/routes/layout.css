@@ -127,6 +127,9 @@
 		&.btn-secondary {
 			@apply bg-secondary-bg text-base-fg;
 		}
+		&.btn-error {
+			@apply bg-[#FF3F4C] text-white;
+		}
 		&.btn-white {
 			@apply bg-white text-primary-bg;
 		}

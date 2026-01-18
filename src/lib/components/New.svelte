@@ -11,7 +11,7 @@
 >
 	<header class="space-y-2">
 		<div class="flex justify-between">
-			<p>{cita.doc}</p>
+			<p class="font-medium">{cita.doc}</p>
 			<ExternalLink class="text-white opacity-0 group-hover:opacity-100" strokeWidth={2.5} />
 		</div>
 		<h3 class="title text-[28px] text-white">{cita.title}</h3>

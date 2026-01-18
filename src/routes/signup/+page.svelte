@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import Checkbox from '$lib/components/Checkbox.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Input from '$lib/components/Input.svelte';
@@ -12,8 +13,9 @@
 	let name = $state('');
 	let email = $state('');
 	let password = $state('');
-	let showError = $state(false);
 	let visible = $state(false);
+
+	let serverErrors = $derived(form?.errors || {});
 </script>
 
 <div class="flex h-screen flex-col items-center justify-between gap-8 p-6">
@@ -25,46 +27,57 @@
 			<h1 class="title">Crear Cuenta</h1>
 			<p>Ingrese sus datos para continuar.</p>
 		</div>
-		<form class="flex flex-col gap-4">
-			<Input
-				id="name"
-				label="Nombre Completo"
-				required
-				aria-invalid={showError}
-				oninput={() => (showError = false)}
-				bind:value={name}
-			/>
-			<Input
-				id="dni"
-				label="DNI"
-				inputmode="tel"
-				pattern="[0-9+]*"
-				oninput={({ currentTarget }: any) => {
-					currentTarget.value = currentTarget.value.replace(/[^0-9+]/g, '');
-					dni = currentTarget.value;
-					showError = false;
-				}}
-				required
-				aria-invalid={showError}
-				bind:value={dni}
-			/>
-			<Input
-				id="email"
-				label="Correo Electrónico"
-				type="email"
-				required
-				aria-invalid={showError}
-				oninput={() => (showError = false)}
-				bind:value={email}
-			/>
-			<div class="relative">
+		<form
+			class="flex flex-col gap-4"
+			method="POST"
+			use:enhance={() => {
+				loading = true;
+				return async ({ update }) => {
+					loading = false;
+					await update();
+				};
+			}}
+		>
+			<Input id="name" label="Nombre Completo" required bind:value={name} />
+			<div class="space-y-1">
 				<Input
-					id="pass"
+					id="dni"
+					label="DNI"
+					inputmode="numeric"
+					maxlength="8"
+					oninput={({ currentTarget }: any) => {
+						currentTarget.value = currentTarget.value.replace(/[^0-9]/g, '');
+						dni = currentTarget.value;
+					}}
+					required
+					aria-invalid={!!serverErrors.dni}
+					bind:value={dni}
+				/>
+				{#if serverErrors.dni}
+					<span class="text-xs text-red-500">{serverErrors.dni}</span>
+				{/if}
+			</div>
+			<div class="space-y-1">
+				<Input
+					id="email"
+					label="Correo Electrónico"
+					type="email"
+					required
+					aria-invalid={!!serverErrors.email}
+					bind:value={email}
+				/>
+				{#if serverErrors.email}
+					<span class="text-xs text-red-500">{serverErrors.email}</span>
+				{/if}
+			</div>
+			<div class="relative space-y-1">
+				<Input
+					id="password"
+					name="password"
 					type={visible ? 'text' : 'password'}
 					label="Contraseña"
 					required
-					aria-invalid={showError}
-					oninput={() => (showError = false)}
+					aria-invalid={!!serverErrors.password}
 					bind:value={password}
 				/>
 				<button
@@ -78,14 +91,19 @@
 						<Eye />
 					{/if}
 				</button>
+				{#if serverErrors.password}
+					<span class="text-xs text-red-500">{serverErrors.password}</span>
+				{/if}
 			</div>
 			<Checkbox required id="terminos" />
 			<button type="submit" class="btn btn-primary" disabled={loading}>
 				{#if loading}
 					<Loader class="animate-spin" />
+					Procesando...
+				{:else}
+					Crear Cuenta
 				{/if}
-				{loading ? 'Cargando' : 'Crear Cuenta'}</button
-			>
+			</button>
 		</form>
 	</main>
 	<footer class="text-center text-lg leading-5.5">

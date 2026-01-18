@@ -55,7 +55,7 @@
 >
 	{#each links as link}
 		<a href={link.href} title={link.alt} aria-label={link.alt} class="text-white">
-			{#if page.url.pathname === link.href}
+			{#if page.url.pathname === '/' || page.url.pathname.startsWith(link.href)}
 				{@html link.currentIcon}
 			{:else}
 				{@html link.defaultIcon}

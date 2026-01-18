@@ -8,7 +8,7 @@
 </script>
 
 <div class="checkbox-container">
-	<input type="checkbox" {id} bind:checked class="sr-only" {...props} />
+	<input type="checkbox" {id} name={id} bind:checked class="sr-only" {...props} />
 	<label for={id} class="checkbox-wrapper">
 		<div class="custom-box {checked ? 'checked' : ''}">
 			{#if checked}

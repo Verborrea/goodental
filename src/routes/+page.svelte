@@ -3,12 +3,12 @@
 	import Splash from './Splash.svelte';
 	import { onMount } from 'svelte';
 
-	let showSplash = $state(false);
+	let showSplash = $state(true);
 
 	onMount(() => {
 		const timer = setTimeout(() => {
 			showSplash = false;
-		}, 3000);
+		}, 4000);
 
 		return () => clearTimeout(timer);
 	});

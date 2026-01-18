@@ -27,7 +27,7 @@
 		bind:value
 		onfocus={() => (focused = true)}
 		onblur={() => (focused = false)}
-		class="block w-full rounded-xl bg-input-bg px-4 pt-5.5 pb-1.5 leading-5 font-medium text-base-fg outline-0 outline-primary-bg placeholder:text-placeholder focus:outline-2"
+		class="block w-full rounded-xl bg-input-bg px-4 pt-5.5 pb-1.5 leading-5 font-medium text-base-fg outline-0 outline-primary-bg placeholder:text-placeholder focus:outline-2 aria-invalid:outline-2 aria-invalid:outline-red-500"
 		class:border={outlined}
 		class:border-slate-300={outlined}
 		class:focus:outline-3={outlined}

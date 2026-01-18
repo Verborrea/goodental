@@ -1,7 +1,7 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 	import { Mail, MapPin, Phone, PillBottle, Syringe, TriangleAlert } from '@lucide/svelte';
-	import Card from './Card.svelte';
+	import Card from '$lib/components/Card.svelte';
 	import { citas } from '$lib/data';
 </script>
 

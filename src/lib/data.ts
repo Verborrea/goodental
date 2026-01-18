@@ -36,6 +36,6 @@ export const all_citas = [
 		date: 'Jueves 5 de Septiembre',
 		from: '4:00 PM',
 		to: '4:45 PM',
-		finished: true
+		finished: false
 	}
 ]
