@@ -112,6 +112,12 @@
 	.subtitle {
 		@apply text-xl leading-none font-semibold tracking-tight text-base-fg;
 	}
+	.badge {
+		@apply inline-block shrink-0 rounded-full bg-secondary-bg px-3 py-1.5 text-sm font-medium text-base-fg;
+		&.badge-blue {
+			@apply bg-[#D1EAFF] text-base-accent;
+		}
+	}
 	.btn {
 		@apply flex cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-3.5 leading-5 font-medium transition duration-150 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50;
 		&:focus {
@@ -123,6 +129,9 @@
 		}
 		&.btn-primary {
 			@apply bg-primary-bg text-primary-fg;
+		}
+		&.btn-green {
+			@apply bg-[#22C35E] text-primary-fg;
 		}
 		&.btn-secondary {
 			@apply bg-secondary-bg text-base-fg;

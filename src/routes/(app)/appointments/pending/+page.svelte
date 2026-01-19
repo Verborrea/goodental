@@ -2,6 +2,16 @@
 	import Header from '$lib/components/Header.svelte';
 	import { Calendar, Clock, HandCoins } from '@lucide/svelte';
 	import Card from '$lib/components/Card.svelte';
+	import { toast } from 'svelte-sonner';
+
+	function addReminder() {
+		toast.success('Recordatorio agregado a tu calendario.');
+	}
+
+	function cancel() {
+		toast.error('Cita cancelada.');
+		history.back();
+	}
 </script>
 
 <Header href="/appointments" label="Cita • Mar 20 ago" />
@@ -43,10 +53,11 @@
 		</ul>
 	</Card>
 	<div class="grid gap-2">
-		<button type="button" class="btn btn-primary">Agregar Recordatorio</button>
+		<button type="button" class="btn btn-primary" onclick={addReminder}>Agregar Recordatorio</button
+		>
 		<div class="grid grid-cols-2 gap-2">
 			<a href="/appointments" class="btn btn-secondary">Atrás</a>
-			<button type="button" class="btn btn-error">Cancelar</button>
+			<button type="button" class="btn btn-error" onclick={cancel}>Cancelar</button>
 		</div>
 	</div>
 </article>

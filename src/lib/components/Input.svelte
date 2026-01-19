@@ -5,7 +5,6 @@
 		type = 'text',
 		requiredVisible = false,
 		value = $bindable(''),
-		outlined = false,
 		...props
 	} = $props();
 
@@ -14,7 +13,7 @@
 </script>
 
 <div class="relative w-full">
-	<label for={id} class:float class="text-placeholder"
+	<label for={id} class:float class:up={type === 'date' || type === 'time'} class="text-placeholder"
 		>{label}
 		{#if requiredVisible}
 			<span class="text-red">*</span>
@@ -28,11 +27,6 @@
 		onfocus={() => (focused = true)}
 		onblur={() => (focused = false)}
 		class="block w-full rounded-xl bg-input-bg px-4 pt-5.5 pb-1.5 leading-5 font-medium text-base-fg outline-0 outline-primary-bg placeholder:text-placeholder focus:outline-2 aria-invalid:outline-2 aria-invalid:outline-red-500"
-		class:border={outlined}
-		class:border-slate-300={outlined}
-		class:focus:outline-3={outlined}
-		class:focus:outline-red-300={outlined}
-		class:focus:border-red-500={outlined}
 		{...props}
 	/>
 </div>
@@ -47,7 +41,8 @@
 		pointer-events: none;
 	}
 
-	label.float {
+	label.float,
+	label.up {
 		top: 8px;
 		font-size: 12px;
 		line-height: 14px;

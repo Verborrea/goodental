@@ -1,10 +1,30 @@
-<script>
+<script lang="ts">
 	import Header from '$lib/components/Header.svelte';
 	import Input from '$lib/components/Input.svelte';
 	import Title from '$lib/components/Title.svelte';
+	import { toast } from 'svelte-sonner';
 
 	let email = $state('');
 	let showError = $state(false);
+
+	function onsubmit(event: SubmitEvent) {
+		event.preventDefault();
+		if (!email || !email.includes('@')) {
+			showError = true;
+			return;
+		}
+		toast.promise<{ name: string }>(
+			() => new Promise((resolve) => setTimeout(() => resolve({ name: 'Correo' }), 1000)),
+			{
+				loading: 'Cargando...',
+				success: (data) => `${data.name} de recuperación enviado.`,
+				error: 'Error'
+			}
+		);
+		setTimeout(() => {
+			history.back();
+		}, 1500);
+	}
 </script>
 
 <svelte:head>
@@ -20,7 +40,7 @@
 			<h1 class="title">Recuperar Acceso</h1>
 			<p>Te enviaremos ayuda para entrar.</p>
 		</header>
-		<form class="flex flex-col gap-4">
+		<form class="flex flex-col gap-4" {onsubmit}>
 			<Input
 				id="email"
 				label="Correo Electrónico"

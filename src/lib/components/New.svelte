@@ -16,7 +16,7 @@
 		</div>
 		<h3 class="title text-[28px] text-white">{cita.title}</h3>
 	</header>
-	<p>Tienes una cita programada para el {cita.date}</p>
+	<p class="leading-[1.2]">Tienes una cita programada para el {cita.date}</p>
 	<p>Hora: {cita.from} - {cita.to}</p>
 	<div class="flex gap-1 font-medium">
 		<div class="rounded-full bg-green-500 px-3 py-1.5 text-sm text-white">Confirmada</div>

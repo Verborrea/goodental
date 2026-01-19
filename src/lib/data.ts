@@ -30,12 +30,22 @@ export const all_citas = [
 		finished: true
 	},
 	{
-		id: 235,
+		id: 300,
 		doc: 'Dr. José Saavedra',
 		title: 'Consulta Inicial de Ortodoncia',
 		date: 'Jueves 5 de Septiembre',
 		from: '4:00 PM',
 		to: '4:45 PM',
 		finished: false
+	},
+	{
+		id: 326,
+		doc: 'Dr. Carlos Urquizo',
+		title: 'Tratamiento de encías',
+		date: 'Viernes 20 de Julio',
+		from: '4:00 PM',
+		to: '4:45 PM',
+		finished: true,
+		notes: 'Se recomienda control de caries en 3 meses. Mejorar rutina de cepillado.'
 	}
 ]

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Header from '$lib/components/Header.svelte';
 	import { Phone } from '@lucide/svelte';
 	import Service from './Service.svelte';
@@ -6,24 +6,29 @@
 	import img2 from '$lib/assets/services/2.avif';
 	import img3 from '$lib/assets/services/3.avif';
 	import img4 from '$lib/assets/services/4.avif';
+	import type { ServiceType } from '$lib/types';
 
-	let services = [
+	let services: ServiceType[] = [
 		{
+			slug: 'consultas-generales',
 			img: img1,
 			name: 'Consultas generales',
 			text: 'Revisión odontológica completa para evaluar tu salud bucal y detectar problemas a tiempo.'
 		},
 		{
+			slug: 'limpieza-y-profilaxis',
 			img: img2,
 			name: 'Limpieza y profilaxis',
 			text: 'Eliminación a fondo de placa y sarro para prevenir caries y enfermedades de las encías.'
 		},
 		{
+			slug: 'estetica-dental',
 			img: img3,
 			name: 'Estética dental',
 			text: 'Blanqueamiento, carillas y otros procedimientos para mejorar tu sonrisa.'
 		},
 		{
+			slug: 'endodoncia',
 			img: img4,
 			name: 'Endodoncia',
 			text: 'Anímate a probar este tratamiento de conducto para salvar piezas dentales dañadas o con infección.'

@@ -33,6 +33,7 @@
 		"@tabler/icons-svelte": "^3.36.1",
 		"embla-carousel": "^8.6.0",
 		"embla-carousel-autoplay": "^8.6.0",
-		"embla-carousel-svelte": "^8.6.0"
+		"embla-carousel-svelte": "^8.6.0",
+		"svelte-sonner": "^1.0.7"
 	}
 }
